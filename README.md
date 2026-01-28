@@ -5,8 +5,7 @@
 A complete web application that analyzes images and generates captions, descriptions, objects, emotions, and creative stories using real AI models.
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![React](https://img.shields.io/badge/React-18+-61DAFB.svg)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6.svg)](https://www.typescriptlang.org/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 </div>
@@ -22,8 +21,7 @@ A complete web application that analyzes images and generates captions, descript
 - [Quick Start](#quick-start)
 - [Usage](#usage)
   - [Backend API](#backend-api)
-  - [React Frontend](#react-frontends)
-  - [Legacy Frontend](#legacy-frontend)
+  - [Frontend](#frontend)
 - [Architecture](#architecture)
 - [Project Structure](#project-structure)
 - [API Documentation](#api-documentation)
@@ -53,12 +51,11 @@ The system uses industry-leading AI models:
 - **Scene Understanding**: Contextual analysis of image environments
 - **Creative Storytelling**: Generates engaging 5-10 line narratives with GPT-2
 
-### 🎨 Modern Frontend Experience
-- **React 18 + TypeScript**: Modern, type-safe frontend development
-- **Tailwind CSS**: Beautiful, responsive design system
-- **Framer Motion**: Smooth animations and micro-interactions
+### 🎨 Frontend Experience
+- **Modern JavaScript**: Clean, vanilla JavaScript with ES6+ features
+- **Responsive Design**: Mobile-first approach with CSS Grid/Flexbox
 - **Drag & Drop Upload**: Intuitive image upload interface
-- **Real-time Loading States**: Beautiful loading animations during AI processing
+- **Real-time Loading**: Beautiful loading animations during AI processing
 - **Copy & Download**: Easy sharing of generated stories
 
 ### 🛠️ Technical Excellence
@@ -102,9 +99,8 @@ The system uses industry-leading AI models:
 ### Prerequisites
 
 - Python 3.8 or higher
-- Node.js 16+ (for React frontend)
 - pip (Python package manager)
-- npm or yarn (Node.js package manager)
+- Modern web browser
 
 ### Step 1: Clone or Download
 
@@ -140,34 +136,11 @@ This will install:
 - `pillow` - Image processing
 - And other required dependencies
 
-### Step 3: Frontend Setup
-
-```bash
-# Navigate to React frontend
-cd frontend-new
-
-# Install Node.js dependencies
-npm install
-
-# Or with yarn
-yarn install
-```
-
-This will install:
-- `react` ^18.2.0 - React library
-- `typescript` - TypeScript compiler
-- `tailwindcss` - CSS framework
-- `framer-motion` - Animation library
-- `lucide-react` - Icon library
-
-### Step 4: Verify Installation
+### Step 3: Verify Installation
 
 ```bash
 # Test backend
 python -c "from backend.vision_service import analyze_image; print('Backend installed successfully!')"
-
-# Test frontend (from frontend-new directory)
-npm run build
 ```
 
 ---
@@ -184,12 +157,14 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 Backend will be available at: `http://localhost:8000`
 
-### 2. Start the Frontend
+### 2. Open the Frontend
 
 ```bash
-# From project root
-cd frontend-new
-npm run dev
+# Open directly in browser
+open frontend/index_original.html
+
+# Or serve with static server
+cd frontend && python -m http.server 3000
 ```
 
 Frontend will be available at: `http://localhost:3000`
@@ -241,7 +216,7 @@ curl -X POST \
 }
 ```
 
-### React Frontend (Recommended)
+### Frontend
 
 #### Features
 - **Modern UI**: Beautiful, responsive interface
@@ -250,25 +225,9 @@ curl -X POST \
 - **Interactive Results**: Animated display of analysis results
 - **Copy & Download**: Easy sharing functionality
 
-#### Components
-- `ImageUpload` - Drag-and-drop image upload component
-- `LoadingState` - Beautiful loading animations
-- `ResultsDisplay` - Comprehensive results display
-- `App` - Main application component
-
-#### Development
-```bash
-cd frontend-new
-npm run dev      # Development server
-npm run build    # Production build
-npm run preview  # Preview production build
-```
-
-### Legacy Frontend (Original)
-
 #### Files
-- `home.html` - Landing page with features
 - `index_original.html` - Main AI tool interface
+- `home.html` - Landing page with features
 - `about.html` - Project information
 - `app.js` - JavaScript functionality
 - `styles.css` - Complete styling
@@ -276,7 +235,7 @@ npm run preview  # Preview production build
 #### Usage
 ```bash
 # Open directly in browser
-open frontend/home.html
+open frontend/index_original.html
 
 # Or serve with static server
 cd frontend && python -m http.server 3000
@@ -292,9 +251,9 @@ cd frontend && python -m http.server 3000
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   Frontend      │    │   Backend API   │    │   AI Models     │
 │                 │    │                 │    │                 │
-│ React + TS      │◄──►│   FastAPI       │◄──►│ BLIP + DETR     │
-│ Tailwind CSS    │    │   Python        │    │ GPT-2           │
-│ Framer Motion   │    │   Async         │    │ Transformers    │
+│ Vanilla JS      │◄──►│   FastAPI       │◄──►│ BLIP + DETR     │
+│ HTML/CSS        │    │   Python        │    │ GPT-2           │
+│ Responsive      │    │   Async         │    │ Transformers    │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
@@ -342,19 +301,12 @@ backend/
 ### Frontend Architecture
 
 ```bash
-frontend-new/
-├── src/
-│   ├── components/          # React components
-│   │   ├── ImageUpload.tsx
-│   │   ├── LoadingState.tsx
-│   │   └── ResultsDisplay.tsx
-│   ├── types/              # TypeScript definitions
-│   ├── utils/              # Helper functions
-│   ├── App.tsx             # Main app component
-│   └── main.tsx            # Entry point
-├── package.json            # Dependencies
-├── vite.config.ts          # Vite configuration
-└── README.md               # Frontend docs
+frontend/
+├── index_original.html   # Main AI tool interface
+├── home.html             # Landing page with features
+├── about.html            # Project information
+├── app.js                # JavaScript functionality
+└── styles.css            # Complete styling
 ```
 
 ---
@@ -370,21 +322,11 @@ AI-Image-to-story-telling/
 │   ├── story_generator.py  # Story generation
 │   ├── config.py           # Configuration
 │   └── __init__.py
-├── frontend-new/           # React frontend
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── types/         # TypeScript types
-│   │   ├── utils/         # Helper functions
-│   │   ├── App.tsx        # Main app
-│   │   └── main.tsx       # Entry point
-│   ├── package.json       # Dependencies
-│   ├── vite.config.ts     # Build config
-│   └── README.md          # Frontend docs
-├── frontend/               # Legacy frontend
+├── frontend/               # Vanilla JavaScript frontend
+│   ├── index_original.html # Main AI tool interface
 │   ├── home.html          # Landing page
-│   ├── index_original.html # Main tool
 │   ├── about.html         # About page
-│   ├── app.js             # JavaScript
+│   ├── app.js             # JavaScript functionality
 │   └── styles.css         # Styling
 ├── requirements.txt        # Python dependencies
 ├── .gitignore             # Git ignore file
@@ -522,7 +464,7 @@ Analyze an uploaded image.
 **Solution**: Ensure backend is running on `http://localhost:8000`.
 
 #### "Frontend not loading"
-**Solution**: Check Node.js installation and run `npm install` in frontend-new directory.
+**Solution**: Check that you're opening the correct HTML file and that the backend is running.
 
 #### "Story generation failed"
 **Solution**: This is usually a temporary issue. Try uploading the image again.
@@ -537,13 +479,6 @@ taskkill /PID <PID> /F
 
 # Or use different port
 uvicorn main:app --reload --port 8001
-```
-
-#### Node modules issues
-```bash
-cd frontend-new
-rm -rf node_modules package-lock.json
-npm install
 ```
 
 #### Python environment issues
@@ -596,12 +531,10 @@ SOFTWARE.
 
 ## Acknowledgments
 
-- Built with [React](https://reactjs.org/) for the modern frontend
+- Built with [Vanilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) for the frontend
 - Powered by [FastAPI](https://fastapi.tiangolo.com/) for the backend
 - AI models from [Hugging Face](https://huggingface.co/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-- Animated with [Framer Motion](https://www.framer.com/motion/)
-- Icons by [Lucide](https://lucide.dev/)
+- Styled with modern CSS and responsive design
 
 ---
 
